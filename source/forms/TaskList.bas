@@ -16,10 +16,10 @@ Begin Form
     DatasheetGridlinesBehavior =3
     GridX =24
     GridY =24
-    Width =2592
+    Width =6480
     DatasheetFontHeight =11
     ItemSuffix =9
-    Left =3225
+    Left =3150
     Top =2415
     Right =14745
     Bottom =14175
@@ -33,6 +33,7 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnLoad ="[Event Procedure]"
     AllowDatasheetView =0
     AllowPivotTableView =0
     AllowPivotChartView =0
@@ -145,7 +146,7 @@ Begin Form
             End
         End
         Begin Section
-            Height =2280
+            Height =2760
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -154,8 +155,8 @@ Begin Form
             Begin
                 Begin Label
                     OverlapFlags =85
-                    Left =180
-                    Top =60
+                    Left =1440
+                    Top =300
                     Width =2160
                     Height =240
                     FontSize =9
@@ -165,126 +166,10 @@ Begin Form
                     Caption ="Link1"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =60
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =300
-                End
-                Begin CommandButton
-                    Visible = NotDefault
-                    OverlapFlags =93
-                    Left =900
-                    Top =1920
-                    Width =1200
-                    Height =240
-                    ForeColor =4210752
-                    Name ="btnClick"
-                    Caption ="Next >>"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =900
-                    LayoutCachedTop =1920
-                    LayoutCachedWidth =2100
-                    LayoutCachedHeight =2160
-                    BackColor =14136213
-                    BorderColor =14136213
-                    HoverColor =15060409
-                    PressedColor =9592887
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                    Overlaps =1
-                End
-                Begin Label
-                    OverlapFlags =85
-                    Left =180
-                    Top =420
-                    Width =2160
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblLink2"
-                    Caption ="Link2"
-                    OnClick ="[Event Procedure]"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =420
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =660
-                End
-                Begin Label
-                    OverlapFlags =85
-                    Left =180
-                    Top =780
-                    Width =2160
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblLink3"
-                    Caption ="Link3"
-                    OnClick ="[Event Procedure]"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =780
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =1020
-                End
-                Begin Label
-                    OverlapFlags =85
-                    Left =180
-                    Top =1140
-                    Width =2160
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblLink4"
-                    Caption ="Link4"
-                    OnClick ="[Event Procedure]"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =1140
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =1380
-                End
-                Begin Label
-                    OverlapFlags =85
-                    Left =180
-                    Top =1500
-                    Width =2160
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblLink5"
-                    Caption ="Link5"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =1500
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =1740
-                End
-                Begin Label
-                    OverlapFlags =215
-                    Left =180
-                    Top =1860
-                    Width =2160
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblLink6"
-                    Caption ="Link6"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =180
-                    LayoutCachedTop =1860
-                    LayoutCachedWidth =2340
-                    LayoutCachedHeight =2100
+                    LayoutCachedLeft =1440
+                    LayoutCachedTop =300
+                    LayoutCachedWidth =3600
+                    LayoutCachedHeight =540
                 End
             End
         End
@@ -321,6 +206,11 @@ Option Explicit
 '  https://books.google.com/books?id=z2aoFGg1HFAC&pg=SA3-PA30&dq=access+vba+creating+custom+form+controls&hl=en&sa=X&ved=0CDAQ6AEwAGoVChMI6KblxdHoyAIVBcdjCh3Okw9V#v=onepage&q=access%20vba%20creating%20custom%20form%20controls&f=false
 ' Revisions:    BLC - 10/28/2015 - 1.00 - initial version
 ' =================================
+
+'---------------------
+' Simulated Inheritance
+'---------------------
+Private oTaskList As Form_Tile
 
 '---------------------
 ' Declarations
@@ -704,6 +594,12 @@ Private Sub Class_Initialize()
 On Error GoTo Err_Handler
 
     MsgBox "Initializing...", vbOKOnly
+    
+    oTaskList.TileHeaderColor = lngBrown
+    oTaskList.TitleFontColor = lngWhite
+    
+    'Me.TileHeaderColor = lngBrown
+    'Me.TitleFontColor = lngWhite
 
 Exit_Sub:
     Exit Sub
@@ -742,6 +638,38 @@ Err_Handler:
       Case Else
         MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Tile form])"
+    End Select
+    Resume Exit_Sub
+End Sub
+
+' ---------------------------------
+' Sub:          Form_Load
+' Description:  form loading actions
+' Assumptions:  -
+' Parameters:   -
+' Returns:      -
+' Throws:       none
+' References:   -
+' Source/date:  Bonnie Campbell, November 10, 2015 - for NCPN tools
+' Adapted:      -
+' Revisions:
+'   BLC - 11/10/2015 - initial version
+' ---------------------------------
+Private Sub Form_Load()
+On Error GoTo Err_Handler
+    
+'    With oTaskList
+'        .TileHeaderColor = lngBrown
+'        .TitleFontColor = lngWhite
+'    End With
+
+Exit_Sub:
+    Exit Sub
+Err_Handler:
+    Select Case Err.Number
+      Case Else
+        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - Form_Load[TaskList form])"
     End Select
     Resume Exit_Sub
 End Sub

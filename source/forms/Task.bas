@@ -21,8 +21,8 @@ Begin Form
     ItemSuffix =25
     Left =3150
     Top =2415
-    Right =9705
-    Bottom =5910
+    Right =14745
+    Bottom =14175
     DatasheetGridlinesColor =14806254
     RecSrcDt = Begin
         0x06dd372434a7e440
@@ -469,7 +469,7 @@ Option Explicit
 '---------------------
 ' Declarations
 '---------------------
-Private oTask As New Form_Comment
+Private p_Task As Form_Comment
 
 'Private m_Title As String
 'Private m_Context As String
@@ -767,6 +767,8 @@ Private Sub Class_Initialize()
 On Error GoTo Err_Handler
 
     MsgBox "Initializing...", vbOKOnly
+    
+    Set p_Task = New Form_Comment
 
 Exit_Sub:
     Exit Sub
@@ -795,10 +797,13 @@ End Sub
 ' ---------------------------------
 Private Sub Class_Terminate()
 On Error GoTo Err_Handler
-Exit_Sub:
-    Exit Sub
     
     MsgBox "Terminating...", vbOKOnly
+    
+    Set p_Task = Nothing
+    
+Exit_Sub:
+    Exit Sub
     
 Err_Handler:
     Select Case Err.Number
@@ -890,8 +895,11 @@ On Error GoTo Err_Handler
     Me.lblCharacterCount.Visible = False
     Me.MaxCount = 50
 
-    Me.cbxPriority.AddItem "Set Priority", 0
-    Me.cbxStatus.AddItem "Set Status", 0
+'    Me.cbxPriority.AddItem "Set Priority", 0
+'    Me.cbxStatus.AddItem "Set Status", 0
+    
+    PopulateCombobox cbxPriority, "priority"
+    PopulateCombobox cbxStatus, "status"
     
     'Me.context = Me.OpenArgs
 

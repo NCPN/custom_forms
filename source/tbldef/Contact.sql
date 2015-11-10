@@ -1,0 +1,20 @@
+CREATE TABLE [Contact] (
+  [ID] AUTOINCREMENT,
+  [ContactID] VARCHAR (50),
+  [LastName] VARCHAR (50),
+  [FirstName] VARCHAR (50),
+  [MiddleInit] VARCHAR (4),
+  [Organization] VARCHAR (50),
+  [PositionTitle] VARCHAR (50),
+  [AddressType] VARCHAR (50),
+  [Address] VARCHAR (50),
+  [Address2] VARCHAR (50),
+  [City] VARCHAR (50),
+  [StateCode] VARCHAR (8),
+  [ZipCode] VARCHAR (50),
+  [Country] VARCHAR (50),
+  [Email] VARCHAR (50),
+  [WorkPhone] VARCHAR (50),
+  [WorkExtension] VARCHAR (50),
+  [ContactNotes] LONGTEXT 
+)
