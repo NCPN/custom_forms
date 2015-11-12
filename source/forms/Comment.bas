@@ -18,7 +18,7 @@ Begin Form
     GridY =24
     Width =6300
     DatasheetFontHeight =11
-    ItemSuffix =17
+    ItemSuffix =18
     Left =6270
     Top =3480
     Right =12825
@@ -64,6 +64,16 @@ Begin Form
             BorderTint =50.0
             ForeThemeColorIndex =0
             ForeTint =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin Rectangle
+            SpecialEffect =3
+            BackStyle =0
+            BorderLineStyle =0
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
@@ -132,7 +142,6 @@ Begin Form
                     Height =300
                     Name ="lblTitle"
                     Caption ="Comment"
-                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
                     LayoutCachedLeft =60
                     LayoutCachedTop =60
@@ -147,7 +156,7 @@ Begin Form
                     BorderWidth =2
                     OverlapFlags =85
                     Top =432
-                    Width =2592
+                    Width =6300
                     BorderColor =65280
                     Name ="lineIndicator"
                     LeftPadding =0
@@ -156,7 +165,7 @@ Begin Form
                     BottomPadding =0
                     GridlineColor =10921638
                     LayoutCachedTop =432
-                    LayoutCachedWidth =2592
+                    LayoutCachedWidth =6300
                     LayoutCachedHeight =432
                     BorderThemeColorIndex =-1
                 End
@@ -168,7 +177,7 @@ Begin Form
                     Height =300
                     ForeColor =8355711
                     Name ="lblContext"
-                    Caption ="Context"
+                    Caption ="comment"
                     GridlineColor =10921638
                     LayoutCachedLeft =4200
                     LayoutCachedTop =60
@@ -196,7 +205,6 @@ Begin Form
                     BorderColor =8355711
                     ForeColor =8355711
                     Name ="lblInstructions"
-                    Caption ="Instructions"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
                     LayoutCachedLeft =180
@@ -242,6 +250,7 @@ Begin Form
                     ForeColor =4210752
                     Name ="btnAdd"
                     Caption ="Add"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =3660
@@ -262,7 +271,7 @@ Begin Form
                 End
                 Begin TextBox
                     OldBorderStyle =0
-                    OverlapFlags =85
+                    OverlapFlags =93
                     IMESentenceMode =3
                     Left =180
                     Top =720
@@ -283,6 +292,7 @@ Begin Form
                     BackShade =95.0
                 End
                 Begin Label
+                    Visible = NotDefault
                     OverlapFlags =85
                     TextAlign =3
                     Left =2700
@@ -301,25 +311,8 @@ Begin Form
                     LayoutCachedHeight =660
                 End
                 Begin Label
+                    Visible = NotDefault
                     OverlapFlags =93
-                    TextAlign =1
-                    Left =4800
-                    Top =420
-                    Width =1380
-                    Height =240
-                    FontSize =9
-                    BorderColor =8355711
-                    ForeColor =8355711
-                    Name ="lblMaxCount"
-                    Caption ="/ XX characters"
-                    GridlineColor =10921638
-                    LayoutCachedLeft =4800
-                    LayoutCachedTop =420
-                    LayoutCachedWidth =6180
-                    LayoutCachedHeight =660
-                End
-                Begin Label
-                    OverlapFlags =87
                     TextAlign =2
                     Left =4140
                     Top =420
@@ -327,14 +320,49 @@ Begin Form
                     Height =240
                     FontSize =9
                     BorderColor =8355711
-                    ForeColor =8355711
+                    ForeColor =255
                     Name ="lblCount"
-                    Caption ="25"
                     GridlineColor =10921638
                     LayoutCachedLeft =4140
                     LayoutCachedTop =420
                     LayoutCachedWidth =4800
                     LayoutCachedHeight =660
+                    ForeThemeColorIndex =-1
+                End
+                Begin Rectangle
+                    SpecialEffect =0
+                    OldBorderStyle =0
+                    OverlapFlags =223
+                    Left =4740
+                    Top =360
+                    Width =1500
+                    Height =360
+                    BorderColor =10921638
+                    Name ="rctAlert"
+                    GridlineColor =10921638
+                    LayoutCachedLeft =4740
+                    LayoutCachedTop =360
+                    LayoutCachedWidth =6240
+                    LayoutCachedHeight =720
+                End
+                Begin Label
+                    OverlapFlags =215
+                    TextAlign =1
+                    Left =4800
+                    Top =420
+                    Width =1380
+                    Height =240
+                    FontSize =9
+                    BorderColor =8355711
+                    ForeColor =255
+                    Name ="lblMaxCount"
+                    Caption ="-1 remaining"
+                    GridlineColor =10921638
+                    LayoutCachedLeft =4800
+                    LayoutCachedTop =420
+                    LayoutCachedWidth =6180
+                    LayoutCachedHeight =660
+                    ForeThemeColorIndex =-1
                 End
             End
         End
@@ -376,6 +404,7 @@ Private m_Instructions As String
 Private m_CountLabel As String
 Private m_CurrentCount As String
 Private m_MaxCount As String
+Private m_AlertCount As Integer
 Private m_RemainingCount As String
 Private m_Comment As String
 
@@ -386,6 +415,7 @@ Private m_CountLabelFontColor As Long
 Private m_CurrentCountFontColor As Long
 Private m_MaxCountFontColor As Long
 Private m_RemainingCountFontColor As Long
+Private m_AlertBoxBackgroundColor As Long
 
 Private m_CommentVisible As Byte
 Private m_ContextVisible As Byte
@@ -394,6 +424,8 @@ Private m_CountLabelVisible As Byte
 Private m_CurrentCountVisible As Byte
 Private m_MaxCountVisible As Byte
 Private m_RemainingCountVisible As Byte
+Private m_AlertCountVisible As Byte
+Private m_AlertBoxVisible As Byte
 
 Private m_AddButtonText As String
 Private m_AddButtonForeColor As Long
@@ -411,7 +443,7 @@ Private m_CancelAction As String
 Private m_EditAction As String
 
 '---------------------
-' Events
+' Event Declarations
 '---------------------
 Public Event Initialize()
 Public Event Terminate()
@@ -419,22 +451,29 @@ Public Event Terminate()
 '---------------------
 ' Properties
 '---------------------
-Public Property Let Title(Value As String)
-    m_Title = Value
-    lblTitle.Caption = m_Title
-End Property
 
+' ==== Values ====
 Public Property Get Title() As String
     Title = m_Title
 End Property
 
-Public Property Get context() As String
-    context = m_Context
+Public Property Let Title(Value As String)
+    If Len(Value) = 0 Then Value = "Form Title"
+    If ValidateString(Value, "alphanumdash") Then
+        m_Title = Value
+    End If
+    lblTitle.Caption = m_Title
 End Property
 
-Public Property Let context(Value As String)
+Public Property Get Context() As String
+    Context = m_Context
+End Property
+
+Public Property Let Context(Value As String)
     If Len(Value) = 0 Then Value = "Context"
-    m_Context = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_Context = Value
+    End If
     lblContext.Caption = m_Context
 End Property
 
@@ -444,7 +483,9 @@ End Property
 
 Public Property Let Instructions(Value As String)
     If Len(Value) = 0 Then Value = "Instructions"
-    m_Instructions = Value
+    If ValidateString(Value, "paragraph") Then
+        m_Instructions = Value
+    End If
     lblInstructions.Caption = m_Instructions
 End Property
 
@@ -454,7 +495,9 @@ End Property
 
 Public Property Let CountLabel(Value As String)
     If Len(Value) = 0 Then Value = "Character Count"
-    m_CountLabel = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_CountLabel = Value
+    End If
     lblCharacterCount.Caption = m_CountLabel
 End Property
 
@@ -464,7 +507,9 @@ End Property
 
 Public Property Let CurrentCount(Value As String)
     If Len(Value) = 0 Then Value = "1"
-    m_CurrentCount = Value
+    If ValidateString(Value, "numeric") Then
+        m_CurrentCount = Value
+    End If
     lblCount.Caption = m_CurrentCount
 End Property
 
@@ -474,8 +519,20 @@ End Property
 
 Public Property Let MaxCount(Value As String)
     If Len(Value) = 0 Then Value = "/ XX characters"
-    m_MaxCount = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_MaxCount = Value
+    End If
     lblMaxCount.Caption = m_MaxCount
+End Property
+
+'set the value at which the count display changes color
+Public Property Get AlertCount() As Integer
+    AlertCount = m_AlertCount
+End Property
+
+Public Property Let AlertCount(Value As Integer)
+    If Len(Value) = 0 Then Value = 10
+    m_AlertCount = Value
 End Property
 
 Public Property Get RemainingCount() As String
@@ -484,7 +541,9 @@ End Property
 
 Public Property Let RemainingCount(Value As String)
     If Len(Value) = 0 Then Value = "XX characters remain"
-    m_RemainingCount = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_RemainingCount = Value
+    End If
     lblMaxCount.Caption = m_RemainingCount
 End Property
 
@@ -494,16 +553,20 @@ End Property
 
 Public Property Let Comment(Value As String)
     If Len(Value) = 0 Then Value = "Comment"
-    m_Comment = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_Comment = Value
+    End If
     tbxComment.Value = m_Comment
 End Property
 
+' ==== Color ====
 Public Property Get CommentHeaderColor() As Long
     CommentHeaderColor = m_CommentHeaderColor
 End Property
 
 Public Property Let CommentHeaderColor(Value As Long)
     m_CommentHeaderColor = Value
+    FormHeader.BackColor = m_CommentHeaderColor
 End Property
 
 Public Property Get TitleFontColor() As Long
@@ -512,6 +575,7 @@ End Property
 
 Public Property Let TitleFontColor(Value As Long)
     m_TitleFontColor = Value
+    lblTitle.ForeColor = m_TitleFontColor
 End Property
 
 Public Property Get InstructionFontColor() As Long
@@ -520,6 +584,7 @@ End Property
 
 Public Property Let InstructionFontColor(Value As Long)
     m_InstructionFontColor = Value
+    lblInstructions.ForeColor = m_InstructionFontColor
 End Property
 
 Public Property Get CountLabelFontColor() As Long
@@ -537,7 +602,7 @@ End Property
 
 Public Property Let CurrentCountFontColor(Value As Long)
     m_CurrentCountFontColor = Value
-    lblCurrentCount.ForeColor = m_CurrentCountFontColor
+    lblCount.ForeColor = m_CurrentCountFontColor
 End Property
 
 Public Property Get MaxCountFontColor() As Long
@@ -558,6 +623,17 @@ Public Property Let RemainingCountFontColor(Value As Long)
     lblMaxCount.ForeColor = m_RemainingCountFontColor
 End Property
 
+Public Property Get AlertBoxBackgroundColor() As Long
+    AlertBoxBackgroundColor = m_AlertBoxBackgroundColor
+End Property
+
+Public Property Let AlertBoxBackgroundColor(Value As Long)
+    rctAlert.BackStyle = 1 '1 = Normal, 0 = Transparent
+    m_AlertBoxBackgroundColor = Value
+    rctAlert.BackColor = m_AlertBoxBackgroundColor
+End Property
+
+' ==== Visibility ====
 Public Property Get CommentVisible() As Byte
     CommentVisible = m_CommentVisible
 End Property
@@ -611,36 +687,294 @@ Public Property Let RemainingCountVisible(Value As Byte)
     m_RemainingCountVisible = Value
 End Property
 
+Public Property Get AlertBoxVisible() As Byte
+    AlertBoxVisible = m_AlertBoxVisible
+End Property
+
+Public Property Let AlertBoxVisible(Value As Byte)
+    m_AlertBoxVisible = Value
+    Me.rctAlert.Visible = m_AlertBoxVisible
+End Property
+
+' ==== Buttons ====
+Public Property Get AddButtonText() As String
+    AddButtonText = m_AddButtonText
+End Property
+
+Public Property Let AddButtonText(Value As String)
+    If Len(Value) = 0 Then Value = "Add"
+    If ValidateString(Value, "alphaspace") Then
+        m_AddButtonText = Value
+    End If
+    btnAdd.Caption = m_AddButtonText
+End Property
+
+Public Property Get CancelButtonText() As String
+    CancelButtonText = m_CancelButtonText
+End Property
+
+Public Property Let CancelButtonText(Value As String)
+    If Len(Value) = 0 Then Value = "Cancel"
+    If ValidateString(Value, "alphaspace") Then
+        m_CancelButtonText = Value
+    End If
+    btnCancel.Caption = m_CancelButtonText
+End Property
+
+Public Property Get AddButtonForeColor() As Long
+    AddButtonForeColor = m_AddButtonForeColor
+End Property
+
+Public Property Let AddButtonForeColor(Value As Long)
+    m_AddButtonForeColor = Value
+    btnAdd.ForeColor = m_AddButtonForeColor
+End Property
+
+Public Property Get AddButtonColor() As Long
+    AddButtonColor = m_AddButtonColor
+End Property
+
+Public Property Let AddButtonColor(Value As Long)
+    m_AddButtonColor = Value
+    btnAdd.BackColor = m_AddButtonColor
+End Property
+
+Public Property Get CancelButtonForeColor() As Long
+    CancelButtonForeColor = m_CancelButtonForeColor
+End Property
+
+Public Property Let CancelButtonForeColor(Value As Long)
+    m_CancelButtonForeColor = Value
+    btnCancel.ForeColor = m_CancelButtonForeColor
+End Property
+
+Public Property Get CancelButtonColor() As Long
+    CancelButtonColor = m_CancelButtonColor
+End Property
+
+Public Property Let CancelButtonColor(Value As Long)
+    m_CancelButtonColor = Value
+    btnCancel.BackColor = m_CancelButtonColor
+End Property
+
+Public Property Get AddButtonVisible() As Byte
+    AddButtonVisible = m_AddButtonVisible
+End Property
+
+Public Property Let AddButtonVisible(Value As Byte)
+    m_AddButtonVisible = Value
+End Property
+
+Public Property Get CancelButtonVisible() As Byte
+    CancelButtonVisible = m_CancelButtonVisible
+End Property
+
+Public Property Let CancelButtonVisible(Value As Byte)
+    m_CancelButtonVisible = Value
+End Property
+
+Public Property Get AddAction() As String
+    AddAction = m_AddAction
+End Property
+
+Public Property Let AddAction(Value As String)
+    If Len(Value) = 0 Then Value = "add"
+    If ValidateString(Value, "alphanumdashunder") Then
+        m_AddAction = Value
+    End If
+End Property
+
+Public Property Get CancelAction() As String
+    CancelAction = m_CancelAction
+End Property
+
+Public Property Let CancelAction(Value As String)
+    If Len(Value) = 0 Then Value = "cancel"
+    If ValidateString(Value, "alpha") Then
+        m_CancelAction = Value
+    End If
+End Property
+Public Property Get EditAction() As String
+    EditAction = m_EditAction
+End Property
+
+Public Property Let EditAction(Value As String)
+    If Len(Value) = 0 Then Value = "edit"
+    If ValidateString(Value, "alpha") Then
+        m_EditAction = Value
+    End If
+End Property
+
 '---------------------
 ' Events
 '---------------------
 
 ' ---------------------------------
-' Sub:          lblTitle_Click
-' Description:  Title click event actions
+' Sub:          Form_Load
+' Description:  form loading actions
 ' Assumptions:  -
 ' Parameters:   -
 ' Returns:      -
 ' Throws:       none
 ' References:   -
-' Source/date:  Bonnie Campbell, October 29, 2015 - for NCPN tools
+' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
 ' Adapted:      -
 ' Revisions:
-'   BLC - 10/29/2015 - initial version
+'   BLC - 11/4/2015 - initial version
 ' ---------------------------------
-Private Sub lblTitle_Click()
+Private Sub Form_Load()
 On Error GoTo Err_Handler
-
-    MsgBox "Click event...", vbOKOnly
+    
+    Me.FormHeader.BackColor = lngBrown
+    Me.TitleFontColor = lngWhite
+    
+    Me.lineIndicator.Width = Me.Form.Width
+    Me.lineIndicator.BorderColor = lngLime
+    
+    Me.Context = "Plot - 24"
+    
+    Me.Instructions = "Enter your establishment comment."
+    Me.CountLabelVisible = False
+    Me.CurrentCount = "Characters Remaining:"
+    Me.lblCharacterCount.Visible = False
+    Me.MaxCount = 50
+    Me.AlertCount = 10
+   
+    Me.AddAction = "add_"
+    
+    Me.Context = Me.OpenArgs
 
 Exit_Sub:
     Exit Sub
-
+    
 Err_Handler:
     Select Case Err.Number
       Case Else
         MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - lblTitle_Click[Comment form])"
+            "Error encountered (#" & Err.Number & " - Form_Load[Comment form])"
+    End Select
+    Resume Exit_Sub
+End Sub
+
+' ---------------------------------
+' Sub:          tbxComment_Change
+' Description:  tbxComment actions on change event
+' Assumptions:  -
+' Parameters:   -
+' Returns:      -
+' Throws:       none
+' References:   -
+' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
+' Adapted:      -
+' Revisions:
+'   BLC - 11/4/2015 - initial version
+' ---------------------------------
+Private Sub tbxComment_Change()
+On Error GoTo Err_Handler
+    
+    Dim CurrentCount As Integer
+    
+    CurrentCount = Me.MaxCount - Len(tbxComment.Text)
+
+    Me.lblMaxCount.Caption = CurrentCount & " remaining"
+    
+    Me.CurrentCountFontColor = vbBlack
+    Me.AlertBoxVisible = False
+    Me.MaxCountFontColor = vbBlack
+    
+    Select Case CurrentCount
+        Case Is < Me.AlertCount
+            Me.AlertBoxVisible = True
+            Me.AlertBoxBackgroundColor = lngYellow
+        Case Is = 0
+            Me.CurrentCountFontColor = vbRed
+        Case Else
+    End Select
+    
+    If CurrentCount < 1 Then 'CInt(Me.MaxCount) Then
+        Me.MaxCountFontColor = vbRed
+    End If
+    
+    If Len(tbxComment.Text) > CInt(Me.MaxCount) Then
+        Me.lblMaxCount.Caption = -CurrentCount & " over"
+        'disable add comment button until count is < or = MaxCount
+        Me.btnAdd.Enabled = False
+    ElseIf Len(tbxComment.Text) = 0 Then
+        'disable add comment button if count = 0
+        Me.btnAdd.Enabled = False
+    Else
+        're-enable add comment button
+        Me.btnAdd.Enabled = True
+    End If
+
+Exit_Sub:
+    Exit Sub
+    
+Err_Handler:
+    Select Case Err.Number
+      Case Else
+        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - tbxComment_Change[Comment form])"
+    End Select
+    Resume Exit_Sub
+End Sub
+
+' ---------------------------------
+' Sub:          btnAdd_Click
+' Description:  Add comment form entry
+' Assumptions:  -
+' Parameters:   -
+' Returns:      -
+' Throws:       none
+' References:   -
+' Source/date:  Bonnie Campbell, November 12, 2015 - for NCPN tools
+' Adapted:      -
+' Revisions:
+'   BLC - 11/12/2015 - initial version
+' ---------------------------------
+Private Sub btnAdd_Click()
+On Error GoTo Err_Handler
+
+    
+
+Exit_Sub:
+    Exit Sub
+    
+Err_Handler:
+    Select Case Err.Number
+      Case Else
+        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - btnAdd_Click[Comment form])"
+    End Select
+    Resume Exit_Sub
+End Sub
+
+' ---------------------------------
+' Sub:          btnCancel_Click
+' Description:  Cancel comment form entry
+' Assumptions:  -
+' Parameters:   -
+' Returns:      -
+' Throws:       none
+' References:   -
+' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
+' Adapted:      -
+' Revisions:
+'   BLC - 11/4/2015 - initial version
+' ---------------------------------
+Private Sub btnCancel_Click()
+On Error GoTo Err_Handler
+
+    DoCmd.Close
+
+Exit_Sub:
+    Exit Sub
+    
+Err_Handler:
+    Select Case Err.Number
+      Case Else
+        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - btnCancel_Click[Comment form])"
     End Select
     Resume Exit_Sub
 End Sub
@@ -733,116 +1067,6 @@ Err_Handler:
       Case Else
         MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Comment form])"
-    End Select
-    Resume Exit_Sub
-End Sub
-
-' ---------------------------------
-' Sub:          btnCancel_Click
-' Description:  Cancel comment form entry
-' Assumptions:  -
-' Parameters:   -
-' Returns:      -
-' Throws:       none
-' References:   -
-' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
-' Adapted:      -
-' Revisions:
-'   BLC - 11/4/2015 - initial version
-' ---------------------------------
-Private Sub btnCancel_Click()
-On Error GoTo Err_Handler
-
-    DoCmd.Close
-
-Exit_Sub:
-    Exit Sub
-    
-Err_Handler:
-    Select Case Err.Number
-      Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - btnCancel_Click[Comment form])"
-    End Select
-    Resume Exit_Sub
-End Sub
-
-' ---------------------------------
-' Sub:          tbxComment_Change
-' Description:  tbxComment actions on change event
-' Assumptions:  -
-' Parameters:   -
-' Returns:      -
-' Throws:       none
-' References:   -
-' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
-' Adapted:      -
-' Revisions:
-'   BLC - 11/4/2015 - initial version
-' ---------------------------------
-Private Sub Form_Load()
-On Error GoTo Err_Handler
-    
-    Me.Instructions = "Enter your establishment comment."
-    Me.CountLabelVisible = False
-    Me.CurrentCount = "Characters Remaining:"
-    Me.lblCharacterCount.Visible = False
-    Me.MaxCount = 50
-    
-    Me.context = Me.OpenArgs
-
-Exit_Sub:
-    Exit Sub
-    
-Err_Handler:
-    Select Case Err.Number
-      Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - Form_Load[Comment form])"
-    End Select
-    Resume Exit_Sub
-End Sub
-
-' ---------------------------------
-' Sub:          tbxComment_Change
-' Description:  tbxComment actions on change event
-' Assumptions:  -
-' Parameters:   -
-' Returns:      -
-' Throws:       none
-' References:   -
-' Source/date:  Bonnie Campbell, November 4, 2015 - for NCPN tools
-' Adapted:      -
-' Revisions:
-'   BLC - 11/4/2015 - initial version
-' ---------------------------------
-Private Sub tbxComment_Change()
-On Error GoTo Err_Handler
-    
-    Me.Instructions = "Enter your establishment comment."
-    Me.CountLabelVisible = False
-    Me.CurrentCountVisible = False
-    Me.MaxCount = 50
-    Me.lblMaxCount.Caption = Me.MaxCount - Len(tbxComment.Text) & " remaining"
-
-    If Me.MaxCount - Len(tbxComment.Text) < 10 Then
-        Me.MaxCountFontColor = vbRed
-    Else
-        Me.MaxCountFontColor = vbBlack
-    End If
-    
-    If Len(tbxComment.Text) > Me.MaxCount Then
-        Me.lblMaxCount.Caption = -(Me.MaxCount - Len(tbxComment.Text)) & " over"
-    End If
-
-Exit_Sub:
-    Exit Sub
-    
-Err_Handler:
-    Select Case Err.Number
-      Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - tbxComment_Change[Comment form])"
     End Select
     Resume Exit_Sub
 End Sub

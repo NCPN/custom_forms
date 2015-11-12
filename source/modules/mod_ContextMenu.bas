@@ -215,7 +215,7 @@ End Sub
 
 ' http://www.excelbanter.com/showthread.php?t=397624
 ' http://www.experts-exchange.com/articles/12904/Understanding-and-using-CommandBars-Part-II-Creating-your-own.html
-Public Sub CreateMenu(context As String)
+Public Sub CreateMenu(Context As String)
 On Error GoTo Err_Procedure
 On Error Resume Next
 Dim cbar As CommandBar
@@ -225,7 +225,7 @@ Dim mnu As String
  
 On Error GoTo 0
 
-    Select Case context
+    Select Case Context
         Case "transect"
             mnu = "dataentry"
         Case "plot"

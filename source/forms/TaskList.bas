@@ -18,11 +18,11 @@ Begin Form
     GridY =24
     Width =6480
     DatasheetFontHeight =11
-    ItemSuffix =9
-    Left =3150
-    Top =2415
-    Right =14745
-    Bottom =14175
+    ItemSuffix =10
+    Left =6180
+    Top =3585
+    Right =12915
+    Bottom =6780
     DatasheetGridlinesColor =14806254
     ShortcutMenuBar ="dataentry"
     RecSrcDt = Begin
@@ -100,6 +100,59 @@ Begin Form
             HoverForeTint =75.0
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
+        End
+        Begin TextBox
+            AddColon = NotDefault
+            AllowAutoCorrect = NotDefault
+            FELineBreak = NotDefault
+            LabelAlign =1
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            FontName ="Calibri"
+            AsianLineBreak =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ListBox
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            FontName ="Calibri"
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ComboBox
+            AddColon = NotDefault
+            AllowAutoCorrect = NotDefault
+            BorderLineStyle =0
+            LabelX =-1800
+            FontSize =11
+            FontName ="Calibri"
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
         End
         Begin FormHeader
             Height =447
@@ -191,7 +244,7 @@ Option Compare Database
 Option Explicit
 
 ' =================================
-' Form:         Tile
+' Form:         TaskList
 ' Level:        Framework form
 ' Version:      1.00
 '
@@ -215,329 +268,329 @@ Private oTaskList As Form_Tile
 '---------------------
 ' Declarations
 '---------------------
-Private m_Title As String
-Private m_Link1Caption As String
-Private m_Link2Caption As String
-Private m_Link3Caption As String
-Private m_Link4Caption As String
-Private m_Link5Caption As String
-Private m_Link6Caption As String
-Private m_BarColor As Variant
-Private m_TileHeaderColor As Long
-Private m_TitleFontColor As Long
-Private m_Link1FontColor As Long
-Private m_Link2FontColor As Long
-Private m_Link3FontColor As Long
-Private m_Link4FontColor As Long
-Private m_Link5FontColor As Long
-Private m_Link6FontColor As Long
-Private m_TileVisible As Byte
-Private m_Link1Visible As Byte
-Private m_Link2Visible As Byte
-Private m_Link3Visible As Byte
-Private m_Link4Visible As Byte
-Private m_Link5Visible As Byte
-Private m_Link6Visible As Byte
-Private m_Link1Action As String
-Private m_Link2Action As String
-Private m_Link3Action As String
-Private m_Link4Action As String
-Private m_Link5Action As String
-Private m_Link6Action As String
+'Private m_Title As String
+'Private m_Link1Caption As String
+'Private m_Link2Caption As String
+'Private m_Link3Caption As String
+'Private m_Link4Caption As String
+'Private m_Link5Caption As String
+'Private m_Link6Caption As String
+'Private m_BarColor As Variant
+'Private m_TileHeaderColor As Long
+'Private m_TitleFontColor As Long
+'Private m_Link1FontColor As Long
+'Private m_Link2FontColor As Long
+'Private m_Link3FontColor As Long
+'Private m_Link4FontColor As Long
+'Private m_Link5FontColor As Long
+'Private m_Link6FontColor As Long
+'Private m_TileVisible As Byte
+'Private m_Link1Visible As Byte
+'Private m_Link2Visible As Byte
+'Private m_Link3Visible As Byte
+'Private m_Link4Visible As Byte
+'Private m_Link5Visible As Byte
+'Private m_Link6Visible As Byte
+'Private m_Link1Action As String
+'Private m_Link2Action As String
+'Private m_Link3Action As String
+'Private m_Link4Action As String
+'Private m_Link5Action As String
+'Private m_Link6Action As String
 
 
 '---------------------
 ' Events
 '---------------------
-Public Event Selected()
-Public Event CriticalState()
-Public Event GoodState()
+'Public Event Selected()
+'Public Event CriticalState()
+'Public Event GoodState()
 Public Event Initialize()
 Public Event Terminate()
 
 '---------------------
 ' Properties
 '---------------------
-Public Property Let Title(Value As String)
-    m_Title = Value
-    lblTitle.Caption = m_Title
-End Property
-
-Public Property Get Title() As String
-    Title = m_Title
-End Property
-
-Public Property Get Link1Caption() As String
-    Link1Caption = m_Link1Caption
-End Property
-
-Public Property Let Link1Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link1"
-    m_Link1Caption = Value
-    lblLink1.Caption = m_Link1Caption
-End Property
-
-Public Property Get Link2Caption() As String
-    Link2Caption = m_Link2Caption
-End Property
-
-Public Property Let Link2Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link2"
-    m_Link2Caption = Value
-    lblLink2.Caption = m_Link2Caption
-End Property
-
-Public Property Get Link3Caption() As String
-    Link3Caption = m_Link3Caption
-End Property
-
-Public Property Let Link3Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link3"
-    m_Link3Caption = Value
-    lblLink3.Caption = m_Link3Caption
-End Property
-
-Public Property Get Link4Caption() As String
-    Link4Caption = m_Link4Caption
-End Property
-
-Public Property Let Link4Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link4"
-    m_Link4Caption = Value
-    lblLink4.Caption = m_Link4Caption
-End Property
-
-Public Property Get Link5Caption() As String
-    Link5Caption = m_Link5Caption
-End Property
-
-Public Property Let Link5Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link5"
-    m_Link5Caption = Value
-    lblLink5.Caption = m_Link5Caption
-End Property
-
-Public Property Get Link6Caption() As String
-    Link6Caption = m_Link6Caption
-End Property
-
-Public Property Let Link6Caption(Value As String)
-    If Len(Value) = 0 Then Value = "Link6"
-    m_Link6Caption = Value
-    lblLink6.Caption = m_Link6Caption
-End Property
-
-Public Property Get Link1Action() As String
-    Link1Action = m_Link1Action
-End Property
-
-Public Property Let Link1Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link1"
-    m_Link1Action = Value
-    'lblLink1.Action = m_Link1Action
-End Property
-
-Public Property Get Link2Action() As String
-    Link2Action = m_Link2Action
-End Property
-
-Public Property Let Link2Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link2"
-    m_Link2Action = Value
-    'lblLink2.Action = m_Link2Action
-End Property
-
-Public Property Get Link3Action() As String
-    Link3Action = m_Link3Action
-End Property
-
-Public Property Let Link3Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link3"
-    m_Link3Action = Value
-    'lblLink3.Action = m_Link3Action
-End Property
-
-Public Property Get Link4Action() As String
-    Link4Action = m_Link4Action
-End Property
-
-Public Property Let Link4Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link4"
-    m_Link4Action = Value
-    'lblLink4.Action = m_Link4Action
-End Property
-
-Public Property Get Link5Action() As String
-    Link5Action = m_Link5Action
-End Property
-
-Public Property Let Link5Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link5"
-    m_Link5Action = Value
-    'lblLink5.Action = m_Link5Action
-End Property
-
-Public Property Get Link6Action() As String
-    Link6Action = m_Link6Action
-End Property
-
-Public Property Let Link6Action(Value As String)
-    If Len(Value) = 0 Then Value = "Link6"
-    m_Link6Action = Value
-    'lblLink6.Action = m_Link6Action
-End Property
-
-Public Property Let TitleFontColor(Value As Long)
-    m_TitleFontColor = Value
-    lblTitle.ForeColor = m_TitleFontColor
-End Property
-
-Public Property Get TitleFontColor() As Long
-    TitleFontColor = m_TitleFontColor
-End Property
-
-Public Property Let TileHeaderColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
-    m_TileHeaderColor = Value
-    FormHeader.BackColor = m_TileHeaderColor
-    'set font color to match
-    Select Case Value
-        Case vbGreen
-            Me.TitleFontColor = vbBlack
-        Case vbRed, vbBlue
-            Me.TitleFontColor = vbWhite
-    End Select
-End Property
-
-Public Property Get TileHeaderColor() As Long
-    TileHeaderColor = m_TileHeaderColor 'FormHeader.BackColor
-End Property
-
-Public Property Let BarColor(Value As Variant)
-    m_BarColor = Value
-    Me.lineIndicator.BorderColor = m_BarColor
-End Property
-
-Public Property Get BarColor()
-    BarColor = m_BarColor
-End Property
-
-Public Property Get Link1FontColor() As Long
-    Link1FontColor = m_Link1FontColor
-End Property
-
-Public Property Let Link1FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen
-    m_Link1FontColor = Value
-End Property
-
-Public Property Get Link2FontColor() As Long
-    Link2FontColor = m_Link2FontColor
-End Property
-
-Public Property Let Link2FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen
-    m_Link2FontColor = Value
-End Property
-
-Public Property Get Link3FontColor() As Long
-    Link3FontColor = m_Link3FontColor
-End Property
-
-Public Property Let Link3FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen
-    m_Link3FontColor = Value
-End Property
-
-Public Property Get Link4FontColor() As Long
-    Link4FontColor = m_Link4FontColor
-End Property
-
-Public Property Let Link4FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
-    m_Link4FontColor = Value
-End Property
-
-Public Property Get Link5FontColor() As Long
-    Link5FontColor = m_Link5FontColor
-End Property
-
-Public Property Let Link5FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
-    m_Link5FontColor = Value
-End Property
-
-Public Property Get Link6FontColor() As Long
-    Link6FontColor = m_Link6FontColor
-End Property
-
-Public Property Let Link6FontColor(Value As Long)
-    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
-    m_Link6FontColor = Value
-End Property
-
-Public Property Get TileVisible() As Byte
-    TileVisible = m_TileVisible
-End Property
-
-Public Property Let TileVisible(Value As Byte)
-    m_TileVisible = Value
-    Me.Visible = m_TileVisible
-End Property
-
-Public Property Get Link1Visible() As Byte
-    Link1Visible = m_Link1Visible
-End Property
-
-Public Property Let Link1Visible(Value As Byte)
-    m_Link1Visible = Value
-    Me.lblLink1.Visible = m_Link1Visible
-End Property
-
-Public Property Get Link2Visible() As Byte
-    Link2Visible = m_Link2Visible
-End Property
-
-Public Property Let Link2Visible(Value As Byte)
-    m_Link2Visible = Value
-    Me.lblLink2.Visible = m_Link2Visible
-End Property
-
-Public Property Get Link3Visible() As Byte
-    Link3Visible = m_Link3Visible
-End Property
-
-Public Property Let Link3Visible(Value As Byte)
-    m_Link3Visible = Value
-    Me.lblLink3.Visible = m_Link3Visible
-End Property
-
-Public Property Get Link4Visible() As Byte
-    Link4Visible = m_Link4Visible
-End Property
-
-Public Property Let Link4Visible(Value As Byte)
-    m_Link4Visible = Value
-    Me.lblLink4.Visible = m_Link4Visible
-End Property
-
-Public Property Get Link5Visible() As Byte
-    Link5Visible = m_Link5Visible
-End Property
-
-Public Property Let Link5Visible(Value As Byte)
-    m_Link5Visible = Value
-    Me.lblLink5.Visible = m_Link5Visible
-End Property
-
-Public Property Get Link6Visible() As Byte
-    Link6Visible = m_Link6Visible
-End Property
-
-Public Property Let Link6Visible(Value As Byte)
-    m_Link6Visible = Value
-    Me.lblLink6.Visible = m_Link6Visible
-End Property
+'Public Property Let Title(Value As String)
+'    m_Title = Value
+'    lblTitle.Caption = m_Title
+'End Property
+'
+'Public Property Get Title() As String
+'    Title = m_Title
+'End Property
+'
+'Public Property Get Link1Caption() As String
+'    Link1Caption = m_Link1Caption
+'End Property
+'
+'Public Property Let Link1Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link1"
+'    m_Link1Caption = Value
+'    lblLink1.Caption = m_Link1Caption
+'End Property
+'
+'Public Property Get Link2Caption() As String
+'    Link2Caption = m_Link2Caption
+'End Property
+'
+'Public Property Let Link2Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link2"
+'    m_Link2Caption = Value
+'    lblLink2.Caption = m_Link2Caption
+'End Property
+'
+'Public Property Get Link3Caption() As String
+'    Link3Caption = m_Link3Caption
+'End Property
+'
+'Public Property Let Link3Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link3"
+'    m_Link3Caption = Value
+'    lblLink3.Caption = m_Link3Caption
+'End Property
+'
+'Public Property Get Link4Caption() As String
+'    Link4Caption = m_Link4Caption
+'End Property
+'
+'Public Property Let Link4Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link4"
+'    m_Link4Caption = Value
+'    lblLink4.Caption = m_Link4Caption
+'End Property
+'
+'Public Property Get Link5Caption() As String
+'    Link5Caption = m_Link5Caption
+'End Property
+'
+'Public Property Let Link5Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link5"
+'    m_Link5Caption = Value
+'    lblLink5.Caption = m_Link5Caption
+'End Property
+'
+'Public Property Get Link6Caption() As String
+'    Link6Caption = m_Link6Caption
+'End Property
+'
+'Public Property Let Link6Caption(Value As String)
+'    If Len(Value) = 0 Then Value = "Link6"
+'    m_Link6Caption = Value
+'    lblLink6.Caption = m_Link6Caption
+'End Property
+'
+'Public Property Get Link1Action() As String
+'    Link1Action = m_Link1Action
+'End Property
+'
+'Public Property Let Link1Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link1"
+'    m_Link1Action = Value
+'    'lblLink1.Action = m_Link1Action
+'End Property
+'
+'Public Property Get Link2Action() As String
+'    Link2Action = m_Link2Action
+'End Property
+'
+'Public Property Let Link2Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link2"
+'    m_Link2Action = Value
+'    'lblLink2.Action = m_Link2Action
+'End Property
+'
+'Public Property Get Link3Action() As String
+'    Link3Action = m_Link3Action
+'End Property
+'
+'Public Property Let Link3Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link3"
+'    m_Link3Action = Value
+'    'lblLink3.Action = m_Link3Action
+'End Property
+'
+'Public Property Get Link4Action() As String
+'    Link4Action = m_Link4Action
+'End Property
+'
+'Public Property Let Link4Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link4"
+'    m_Link4Action = Value
+'    'lblLink4.Action = m_Link4Action
+'End Property
+'
+'Public Property Get Link5Action() As String
+'    Link5Action = m_Link5Action
+'End Property
+'
+'Public Property Let Link5Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link5"
+'    m_Link5Action = Value
+'    'lblLink5.Action = m_Link5Action
+'End Property
+'
+'Public Property Get Link6Action() As String
+'    Link6Action = m_Link6Action
+'End Property
+'
+'Public Property Let Link6Action(Value As String)
+'    If Len(Value) = 0 Then Value = "Link6"
+'    m_Link6Action = Value
+'    'lblLink6.Action = m_Link6Action
+'End Property
+'
+'Public Property Let TitleFontColor(Value As Long)
+'    m_TitleFontColor = Value
+'    lblTitle.ForeColor = m_TitleFontColor
+'End Property
+'
+'Public Property Get TitleFontColor() As Long
+'    TitleFontColor = m_TitleFontColor
+'End Property
+'
+'Public Property Let TileHeaderColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
+'    m_TileHeaderColor = Value
+'    FormHeader.BackColor = m_TileHeaderColor
+'    'set font color to match
+'    Select Case Value
+'        Case vbGreen
+'            Me.TitleFontColor = vbBlack
+'        Case vbRed, vbBlue
+'            Me.TitleFontColor = vbWhite
+'    End Select
+'End Property
+'
+'Public Property Get TileHeaderColor() As Long
+'    TileHeaderColor = m_TileHeaderColor 'FormHeader.BackColor
+'End Property
+'
+'Public Property Let BarColor(Value As Variant)
+'    m_BarColor = Value
+'    Me.lineIndicator.BorderColor = m_BarColor
+'End Property
+'
+'Public Property Get BarColor()
+'    BarColor = m_BarColor
+'End Property
+'
+'Public Property Get Link1FontColor() As Long
+'    Link1FontColor = m_Link1FontColor
+'End Property
+'
+'Public Property Let Link1FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen
+'    m_Link1FontColor = Value
+'End Property
+'
+'Public Property Get Link2FontColor() As Long
+'    Link2FontColor = m_Link2FontColor
+'End Property
+'
+'Public Property Let Link2FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen
+'    m_Link2FontColor = Value
+'End Property
+'
+'Public Property Get Link3FontColor() As Long
+'    Link3FontColor = m_Link3FontColor
+'End Property
+'
+'Public Property Let Link3FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen
+'    m_Link3FontColor = Value
+'End Property
+'
+'Public Property Get Link4FontColor() As Long
+'    Link4FontColor = m_Link4FontColor
+'End Property
+'
+'Public Property Let Link4FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
+'    m_Link4FontColor = Value
+'End Property
+'
+'Public Property Get Link5FontColor() As Long
+'    Link5FontColor = m_Link5FontColor
+'End Property
+'
+'Public Property Let Link5FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
+'    m_Link5FontColor = Value
+'End Property
+'
+'Public Property Get Link6FontColor() As Long
+'    Link6FontColor = m_Link6FontColor
+'End Property
+'
+'Public Property Let Link6FontColor(Value As Long)
+'    If Len(Value) < 0 Then Value = vbGreen '"#3F3F3F"
+'    m_Link6FontColor = Value
+'End Property
+'
+'Public Property Get TileVisible() As Byte
+'    TileVisible = m_TileVisible
+'End Property
+'
+'Public Property Let TileVisible(Value As Byte)
+'    m_TileVisible = Value
+'    Me.Visible = m_TileVisible
+'End Property
+'
+'Public Property Get Link1Visible() As Byte
+'    Link1Visible = m_Link1Visible
+'End Property
+'
+'Public Property Let Link1Visible(Value As Byte)
+'    m_Link1Visible = Value
+'    Me.lblLink1.Visible = m_Link1Visible
+'End Property
+'
+'Public Property Get Link2Visible() As Byte
+'    Link2Visible = m_Link2Visible
+'End Property
+'
+'Public Property Let Link2Visible(Value As Byte)
+'    m_Link2Visible = Value
+'    Me.lblLink2.Visible = m_Link2Visible
+'End Property
+'
+'Public Property Get Link3Visible() As Byte
+'    Link3Visible = m_Link3Visible
+'End Property
+'
+'Public Property Let Link3Visible(Value As Byte)
+'    m_Link3Visible = Value
+'    Me.lblLink3.Visible = m_Link3Visible
+'End Property
+'
+'Public Property Get Link4Visible() As Byte
+'    Link4Visible = m_Link4Visible
+'End Property
+'
+'Public Property Let Link4Visible(Value As Byte)
+'    m_Link4Visible = Value
+'    Me.lblLink4.Visible = m_Link4Visible
+'End Property
+'
+'Public Property Get Link5Visible() As Byte
+'    Link5Visible = m_Link5Visible
+'End Property
+'
+'Public Property Let Link5Visible(Value As Byte)
+'    m_Link5Visible = Value
+'    Me.lblLink5.Visible = m_Link5Visible
+'End Property
+'
+'Public Property Get Link6Visible() As Byte
+'    Link6Visible = m_Link6Visible
+'End Property
+'
+'Public Property Let Link6Visible(Value As Byte)
+'    m_Link6Visible = Value
+'    Me.lblLink6.Visible = m_Link6Visible
+'End Property
 
 '---------------------
 ' Events
@@ -556,22 +609,22 @@ End Property
 ' Revisions:
 '   BLC - 10/29/2015 - initial version
 ' ---------------------------------
-Private Sub lblLink1_Click()
-On Error GoTo Err_Handler
-
-    MsgBox "Click event...", vbOKOnly
-
-Exit_Sub:
-    Exit Sub
-
-Err_Handler:
-    Select Case Err.Number
-      Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - lblLink1_Click[Tile form])"
-    End Select
-    Resume Exit_Sub
-End Sub
+'Private Sub lblLink1_Click()
+'On Error GoTo Err_Handler
+'
+'    MsgBox "Click event...", vbOKOnly
+'
+'Exit_Sub:
+'    Exit Sub
+'
+'Err_Handler:
+'    Select Case Err.Number
+'      Case Else
+'        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+'            "Error encountered (#" & Err.Number & " - lblLink1_Click[Tile form])"
+'    End Select
+'    Resume Exit_Sub
+'End Sub
 
 '---------------------
 ' Methods
@@ -658,10 +711,14 @@ End Sub
 Private Sub Form_Load()
 On Error GoTo Err_Handler
     
+    Set oTaskList = Me
 '    With oTaskList
 '        .TileHeaderColor = lngBrown
 '        .TitleFontColor = lngWhite
 '    End With
+
+MsgBox "loading..."
+
 
 Exit_Sub:
     Exit Sub
@@ -692,7 +749,7 @@ On Error GoTo Err_Handler
 Exit_Sub:
     
     MsgBox "SetHeaderColor...", vbOKOnly
-    Me.TileHeaderColor = Color
+    'Me.TileHeaderColor = Color
     
 Err_Handler:
     Select Case Err.Number

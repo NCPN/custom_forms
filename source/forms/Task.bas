@@ -832,7 +832,7 @@ On Error GoTo Err_Handler
 Exit_Sub:
     
     MsgBox "SetHeaderColor...", vbOKOnly
-    Me.CommentHeaderColor = Color
+    'Me.CommentHeaderColor = Color
     
 Err_Handler:
     Select Case Err.Number
@@ -889,11 +889,11 @@ End Sub
 Private Sub Form_Load()
 On Error GoTo Err_Handler
 
-    Me.Instructions = "Enter your task."
-    Me.CountLabelVisible = False
-    Me.CurrentCount = "Characters Remaining:"
-    Me.lblCharacterCount.Visible = False
-    Me.MaxCount = 50
+'    Me.Instructions = "Enter your task."
+'    Me.CountLabelVisible = False
+'    Me.CurrentCount = "Characters Remaining:"
+'    Me.lblCharacterCount.Visible = False
+'    Me.MaxCount = 50
 
 '    Me.cbxPriority.AddItem "Set Priority", 0
 '    Me.cbxStatus.AddItem "Set Status", 0

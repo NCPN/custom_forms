@@ -22,6 +22,7 @@ Option Explicit
 '---------------------
 Private m_ID As Integer
 Private m_Comment As String
+Private m_MaxLength As Integer
 
 '---------------------
 ' Events
@@ -31,7 +32,9 @@ Private m_Comment As String
 ' Properties
 '---------------------
 Public Property Let ID(Value As Integer)
-    m_ID = Value
+    If IsNumeric(Value) Then
+        m_ID = Value
+    End If
 End Property
 
 Public Property Get ID() As Integer
@@ -39,9 +42,25 @@ Public Property Get ID() As Integer
 End Property
 
 Public Property Let Comment(Value As String)
-    m_Comment = Value
+    If ValidateString(Value, "alphanumdashslashspace") Then
+        m_Comment = Value
+    End If
 End Property
 
 Public Property Get Comment() As String
     Comment = m_Comment
 End Property
+
+Public Property Let MaxLength(Value As Integer)
+    If IsNumeric(Value) Then
+        m_MaxLength = Value
+    End If
+End Property
+
+Public Property Get MaxLength() As Integer
+    MaxLength = m_MaxLength
+End Property
+
+'---------------------
+' Methods
+'---------------------
