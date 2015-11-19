@@ -135,7 +135,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - XX[Default form])"
     End Select
     Resume Exit_Sub
@@ -166,7 +166,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Form_Load[_Default form])"
     End Select
     Resume Exit_Sub

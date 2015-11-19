@@ -21,7 +21,7 @@ Begin Form
     ItemSuffix =25
     Left =3150
     Top =2415
-    Right =14745
+    Right =18945
     Bottom =14175
     DatasheetGridlinesColor =14806254
     RecSrcDt = Begin
@@ -470,46 +470,7 @@ Option Explicit
 ' Declarations
 '---------------------
 Private p_Task As Form_Comment
-
-'Private m_Title As String
-'Private m_Context As String
-'Private m_Instructions As String
-'Private m_CountLabel As String
-'Private m_CurrentCount As String
-'Private m_MaxCount As String
-'Private m_RemainingCount As String
-'Private m_Comment As String
-'
-'Private m_CommentHeaderColor As Long
-'Private m_TitleFontColor As Long
-'Private m_InstructionFontColor As Long
-'Private m_CountLabelFontColor As Long
-'Private m_CurrentCountFontColor As Long
-'Private m_MaxCountFontColor As Long
-'Private m_RemainingCountFontColor As Long
-'
-'Private m_CommentVisible As Byte
-'Private m_ContextVisible As Byte
-'Private m_InstructionVisible As Byte
-'Private m_CountLabelVisible As Byte
-'Private m_CurrentCountVisible As Byte
-'Private m_MaxCountVisible As Byte
-'Private m_RemainingCountVisible As Byte
-'
-'Private m_AddButtonText As String
-'Private m_AddButtonForeColor As Long
-'Private m_AddButtonColor As Long
-'
-'Private m_CancelButtonText As String
-'Private m_CancelButtonForeColor As Long
-'Private m_CancelButtonColor As Long
-'
-'Private m_AddButtonVisible As Byte
-'Private m_CancelButtonVisible As Byte
-'
-'Private m_AddAction As String
-'Private m_CancelAction As String
-'Private m_EditAction As String
+Private p_oTask As Task
 
 '---------------------
 ' Events
@@ -520,198 +481,7 @@ Public Event Terminate()
 '---------------------
 ' Properties
 '---------------------
-'Public Property Let Title(Value As String)
-'    m_Title = Value
-'    lblTitle.Caption = m_Title
-'End Property
-'
-'Public Property Get Title() As String
-'    Title = m_Title
-'End Property
-'
-'Public Property Get context() As String
-'    context = m_Context
-'End Property
-'
-'Public Property Let context(Value As String)
-'    If Len(Value) = 0 Then Value = "Context"
-'    m_Context = Value
-'    lblContext.Caption = m_Context
-'End Property
-'
-'Public Property Get Instructions() As String
-'    Instructions = m_Instructions
-'End Property
-'
-'Public Property Let Instructions(Value As String)
-'    If Len(Value) = 0 Then Value = "Instructions"
-'    m_Instructions = Value
-'    lblInstructions.Caption = m_Instructions
-'End Property
-'
-'Public Property Get CountLabel() As String
-'    CountLabel = m_CountLabel
-'End Property
-'
-'Public Property Let CountLabel(Value As String)
-'    If Len(Value) = 0 Then Value = "Character Count"
-'    m_CountLabel = Value
-'    lblCharacterCount.Caption = m_CountLabel
-'End Property
-'
-'Public Property Get CurrentCount() As String
-'    CurrentCount = m_CurrentCount
-'End Property
-'
-'Public Property Let CurrentCount(Value As String)
-'    If Len(Value) = 0 Then Value = "1"
-'    m_CurrentCount = Value
-'    lblCount.Caption = m_CurrentCount
-'End Property
-'
-'Public Property Get MaxCount() As String
-'    MaxCount = m_MaxCount
-'End Property
-'
-'Public Property Let MaxCount(Value As String)
-'    If Len(Value) = 0 Then Value = "/ XX characters"
-'    m_MaxCount = Value
-'    lblMaxCount.Caption = m_MaxCount
-'End Property
-'
-'Public Property Get RemainingCount() As String
-'    RemainingCount = m_RemainingCount
-'End Property
-'
-'Public Property Let RemainingCount(Value As String)
-'    If Len(Value) = 0 Then Value = "XX characters remain"
-'    m_RemainingCount = Value
-'    lblMaxCount.Caption = m_RemainingCount
-'End Property
-'
-'Public Property Get Comment() As String
-'    Comment = m_Comment
-'End Property
-'
-'Public Property Let Comment(Value As String)
-'    If Len(Value) = 0 Then Value = "Comment"
-'    m_Comment = Value
-'    tbxComment.Value = m_Comment
-'End Property
-'
-'Public Property Get CommentHeaderColor() As Long
-'    CommentHeaderColor = m_CommentHeaderColor
-'End Property
-'
-'Public Property Let CommentHeaderColor(Value As Long)
-'    m_CommentHeaderColor = Value
-'End Property
-'
-'Public Property Get TitleFontColor() As Long
-'    TitleFontColor = m_TitleFontColor
-'End Property
-'
-'Public Property Let TitleFontColor(Value As Long)
-'    m_TitleFontColor = Value
-'End Property
-'
-'Public Property Get InstructionFontColor() As Long
-'    InstructionFontColor = m_InstructionFontColor
-'End Property
-'
-'Public Property Let InstructionFontColor(Value As Long)
-'    m_InstructionFontColor = Value
-'End Property
-'
-'Public Property Get CountLabelFontColor() As Long
-'    CountLabelFontColor = m_CountLabelFontColor
-'End Property
-'
-'Public Property Let CountLabelFontColor(Value As Long)
-'    m_CountLabelFontColor = Value
-'    lblCount.ForeColor = m_CountLabelFontColor
-'End Property
-'
-'Public Property Get CurrentCountFontColor() As Long
-'    CurrentCountFontColor = m_CurrentCountFontColor
-'End Property
-'
-'Public Property Let CurrentCountFontColor(Value As Long)
-'    m_CurrentCountFontColor = Value
-'    lblCurrentCount.ForeColor = m_CurrentCountFontColor
-'End Property
-'
-'Public Property Get MaxCountFontColor() As Long
-'    MaxCountFontColor = m_MaxCountFontColor
-'End Property
-'
-'Public Property Let MaxCountFontColor(Value As Long)
-'    m_MaxCountFontColor = Value
-'    lblMaxCount.ForeColor = m_MaxCountFontColor
-'End Property
-'
-'Public Property Get RemainingCountFontColor() As Long
-'    RemainingCountFontColor = m_RemainingCountFontColor
-'End Property
-'
-'Public Property Let RemainingCountFontColor(Value As Long)
-'    m_RemainingCountFontColor = Value
-'    lblMaxCount.ForeColor = m_RemainingCountFontColor
-'End Property
-'
-'Public Property Get CommentVisible() As Byte
-'    CommentVisible = m_CommentVisible
-'End Property
-'
-'Public Property Let CommentVisible(Value As Byte)
-'    m_CommentVisible = Value
-'    tbxComment.Visible = m_CommentVisible
-'End Property
-'
-'Public Property Get InstructionVisible() As Byte
-'    InstructionVisible = m_InstructionVisible
-'End Property
-'
-'Public Property Let InstructionVisible(Value As Byte)
-'    m_InstructionVisible = Value
-'    lblInstructions.Visible = m_InstructionVisible
-'End Property
-'
-'Public Property Get CountLabelVisible() As Byte
-'    CountLabelVisible = m_CountLabelVisible
-'End Property
-'
-'Public Property Let CountLabelVisible(Value As Byte)
-'    m_CountLabelVisible = Value
-'    lblCount.Visible = m_CountLabelVisible
-'End Property
-'
-'Public Property Get CurrentCountVisible() As Byte
-'    CurrentCountVisible = m_CurrentCountVisible
-'End Property
-'
-'Public Property Let CurrentCountVisible(Value As Byte)
-'    m_CurrentCountVisible = Value
-'    lblCount.Visible = m_CurrentCountVisible
-'End Property
-'
-'Public Property Get MaxCountVisible() As Byte
-'    MaxCountVisible = m_MaxCountVisible
-'End Property
-'
-'Public Property Let MaxCountVisible(Value As Byte)
-'    m_MaxCountVisible = Value
-'    lblMaxCount.Visible = m_MaxCountVisible
-'End Property
-'
-'Public Property Get RemainingCountVisible() As Byte
-'    RemainingCountVisible = m_RemainingCountVisible
-'End Property
-'
-'Public Property Let RemainingCountVisible(Value As Byte)
-'    m_RemainingCountVisible = Value
-'End Property
-'
+
 '---------------------
 ' Events
 '---------------------
@@ -740,7 +510,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - lblTitle_Click[Comment form])"
     End Select
     Resume Exit_Sub
@@ -776,7 +546,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Initialize[Comment form])"
     End Select
     Resume Exit_Sub
@@ -808,17 +578,31 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Comment form])"
     End Select
     Resume Exit_Sub
 End Sub
 
+Public Sub testme()
+    With p_oTask
+        .TaskType = "TaskType.Photo"
+        .Task = "Testing description"
+        .Status = Status.Opened
+        .Priority = Priority.High
+        .RequestedByID = 3
+        .CompletedByID = 1
+        .AddTask
+    End With
+End Sub
+
 ' ---------------------------------
-' Sub:          SetHeaderColor
-' Description:  Set header color event
+' Sub:          AddTask
+' Description:  Add new task item
 ' Assumptions:  -
-' Parameters:   -
+' Parameters:   context - what the task is about/task type (string)
+'               task
+'               recordID - ID for the record the task references (integer)
 ' Returns:      -
 ' Throws:       none
 ' References:   -
@@ -827,18 +611,36 @@ End Sub
 ' Revisions:
 '   BLC - 11/3/2015 - initial version
 ' ---------------------------------
-Private Sub SetHeaderColor(Color As Long)
+Private Sub AddTask(context As String, recordID As Integer, description As String, _
+                    Status As Integer, Priority As Integer, Requestor As Integer, _
+                    Optional completor As Integer)
 On Error GoTo Err_Handler
 Exit_Sub:
     
-    MsgBox "SetHeaderColor...", vbOKOnly
-    'Me.CommentHeaderColor = Color
+    Dim oTask As New Task
+    
+    With oTask
+        .TaskType = context
+        .Task = description
+        .Status = Status
+        .Priority = Priority
+        .RequestedByID = Requestor
+        If IsNumeric(completor) Then
+            .CompletedByID = completor
+        End If
+        .AddTask
+    
+        If IsNumeric(.ID) Then
+            MsgBox "New task ID = " & .ID
+        End If
+    
+    End With
     
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - Class_Terminate[Task form])"
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - AddTask[Task class])"
     End Select
     Resume Exit_Sub
 End Sub
@@ -909,7 +711,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Form_Load[Task form])"
     End Select
     Resume Exit_Sub

@@ -290,7 +290,7 @@ End Property
 
 Public Property Let PanelVisible(Value As Byte)
     m_PanelVisible = Value
-    Me.Visible = m_PanelVisible
+    Me.visible = m_PanelVisible
 End Property
 
 Public Property Get MessageVisible() As Byte
@@ -299,7 +299,7 @@ End Property
 
 Public Property Let MessageVisible(Value As Byte)
     m_MessageVisible = Value
-    Me.lblMessage.Visible = m_MessageVisible
+    Me.lblMessage.visible = m_MessageVisible
 End Property
 
 '---------------------
@@ -330,7 +330,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - lblMessage_Click[Panel form])"
     End Select
     Resume Exit_Sub
@@ -364,7 +364,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Initialize[Panel form])"
     End Select
     Resume Exit_Sub
@@ -393,7 +393,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Panel form])"
     End Select
     Resume Exit_Sub
@@ -422,7 +422,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Panel form])"
     End Select
     Resume Exit_Sub

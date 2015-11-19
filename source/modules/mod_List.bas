@@ -68,7 +68,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - lvwPopulateFromQuery[mod_List])"
     End Select
     Resume Exit_Procedure
@@ -138,7 +138,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateListHeaders[mod_List])"
     End Select
     Resume Exit_Sub
@@ -196,7 +196,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - lbxConditionalColor[mod_List])"
     End Select
     Resume Exit_Procedure
@@ -246,7 +246,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - IsListDuplicate[mod_List])"
     End Select
     Resume Exit_Function
@@ -304,7 +304,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - SortList[mod_List])"
     End Select
     Resume Exit_Sub
@@ -343,7 +343,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetListCount[mod_List])"
     End Select
     Resume Exit_Function
@@ -391,7 +391,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - CountArrayValues[mod_List])"
     End Select
     Resume Exit_Function
@@ -451,7 +451,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - SaveListToTable[mod_List])"
     End Select
     Resume Exit_Sub
@@ -603,7 +603,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - SetListRecordset[mod_List])"
     End Select
     Resume Exit_Sub
@@ -729,7 +729,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - AddListRecordset[mod_List])"
     End Select
     Resume Exit_Sub
@@ -768,7 +768,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetListRecordset[mod_List])"
     End Select
     Resume Exit_Function
@@ -853,7 +853,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - MoveSingleItem[mod_List])"
     End Select
     Resume Exit_Sub
@@ -929,7 +929,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - MoveAllItems[mod_List])"
     End Select
     Resume Exit_Sub
@@ -1054,7 +1054,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - MoveSelectedItems[mod_List])"
     End Select
     Resume Exit_Sub
@@ -1104,7 +1104,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - RemoveSelectedItems[mod_List])"
     End Select
     Resume Exit_Sub
@@ -1163,7 +1163,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - RemoveListDupes[mod_List])"
     End Select
     Resume Exit_Sub
@@ -1197,7 +1197,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ClearList[mod_List])"
     End Select
     Resume Exit_Sub

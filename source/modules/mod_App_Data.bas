@@ -76,7 +76,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - fillList[mod_App_Data])"
     End Select
     Resume Exit_Sub
@@ -209,7 +209,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateList[mod_App_Data])"
     End Select
     Resume Exit_Sub
@@ -270,7 +270,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateList[mod_App_Data])"
     End Select
     Resume Exit_Sub
@@ -323,7 +323,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - getParkState[mod_App_Data])"
     End Select
     Resume Exit_Function
@@ -369,7 +369,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - getListLastModifiedDate[mod_App_Data])"
     End Select
     Resume Exit_Function
@@ -418,7 +418,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - IsUsedTargetArea[mod_App_Data])"
     End Select
     Resume Exit_Function
@@ -470,7 +470,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateTree[mod_App_Data])"
     End Select
     Resume Exit_Sub
@@ -522,7 +522,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateTree[mod_App_Data])"
     End Select
     Resume Exit_Sub

@@ -64,7 +64,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ChangeMSysConnection[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -110,7 +110,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ChangeMSysDb[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -155,7 +155,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ChangeTSysDb[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -212,7 +212,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - SetDebugDbPaths[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -235,34 +235,46 @@ End Sub
 Public Sub DebugTest()
 On Error GoTo Err_Handler
 
-    Dim strDbPath As String, strDb As String
+'    Dim strDbPath As String, strDb As String
+'
+'    'invasives be
+''    strDbPath = "C:\___TEST_DATA\test\Invasives_be.accdb"
+'    strDbPath = "Z:\_____LIB\dev\git_projects\TEST_DATA\test2\Invasives_be.accdb"
+'    strDb = ParseFileName(strDbPath)
+'
+'    SetDebugDbPaths strDbPath
+'
+'    'NCPN master plants
+''    strDbPath = "C:\___TEST_DATA\NCPN_Master_Species.accdb"
+'    strDbPath = "Z:\_____LIB\dev\git_projects\TEST_DATA\test2\NCPN_Master_Species.accdb"
+'    strDb = ParseFileName(strDbPath)
+'
+'    SetDebugDbPaths strDbPath
+'
+'    'progress bar test
+'    DoCmd.OpenForm "frm_ProgressBar", acNormal
+'    Dim i As Integer
+'
+'    For i = 1 To 10
+'
+'        Forms("frm_ProgressBar").Increment i * 10, "Preparing report..."
+'    Next
+'
+'    'test parsing
+'    ParseFileName ("C:\___TEST_DATA\test_BE_new\Invasives_be.accdb")
 
-    'invasives be
-'    strDbPath = "C:\___TEST_DATA\test\Invasives_be.accdb"
-    strDbPath = "Z:\_____LIB\dev\git_projects\TEST_DATA\test2\Invasives_be.accdb"
-    strDb = ParseFileName(strDbPath)
+    Dim p_oTask As Task
     
-    SetDebugDbPaths strDbPath
-    
-    'NCPN master plants
-'    strDbPath = "C:\___TEST_DATA\NCPN_Master_Species.accdb"
-    strDbPath = "Z:\_____LIB\dev\git_projects\TEST_DATA\test2\NCPN_Master_Species.accdb"
-    strDb = ParseFileName(strDbPath)
-
-    SetDebugDbPaths strDbPath
-
-    'progress bar test
-    DoCmd.OpenForm "frm_ProgressBar", acNormal
-    Dim i As Integer
-    
-    For i = 1 To 10
-        
-        Forms("frm_ProgressBar").Increment i * 10, "Preparing report..."
-    Next
-
-    'test parsing
-    ParseFileName ("C:\___TEST_DATA\test_BE_new\Invasives_be.accdb")
-
+    Set p_oTask = New Task
+    With p_oTask
+        .TaskType = "TaskType.Photo"
+        .Task = "Testing description"
+        .Status = Status.Opened
+        .Priority = Priority.High
+        .RequestedByID = 3
+        .CompletedByID = 1
+        .AddTask
+    End With
 
 Exit_Sub:
     Exit Sub
@@ -270,7 +282,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - DebugTest[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -311,7 +323,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetErrorTrappingOption[mod_Dev_Debug])"
     End Select
     Resume Exit_Function
@@ -346,7 +358,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - DeleteModule[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -415,7 +427,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - RemoveVCSModules[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub
@@ -460,7 +472,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - AddModules[mod_Dev_Debug])"
     End Select
     Resume Exit_Sub

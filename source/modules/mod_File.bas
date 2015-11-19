@@ -47,7 +47,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - CreateFolder[mod_File])"
     End Select
     Resume Exit_Function
@@ -83,7 +83,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - FolderExists[mod_File])"
     End Select
     Resume Exit_Function
@@ -138,7 +138,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetFile[mod_File])"
     End Select
     Resume Exit_Function
@@ -186,7 +186,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - SaveFile[mod_File])"
     End Select
     Resume Exit_Function
@@ -222,7 +222,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - FileExists[mod_File])"
     End Select
     Resume Exit_Function
@@ -265,7 +265,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - DeleteFile[mod_File])"
     End Select
     Resume Exit_Function
@@ -301,7 +301,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ParseFileName[mod_File])"
     End Select
     Resume Exit_Function
@@ -351,7 +351,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ParseFileExt[mod_File])"
     End Select
     Resume Exit_Function
@@ -380,7 +380,7 @@ Public Function OpenExcelFile(ByVal strPath As String)
 
     ' Open the file
     With objExcel
-        .Visible = True
+        .visible = True
         .Workbooks.Open (strPath)
     End With
     
@@ -392,7 +392,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - OpenExcelFile[mod_File])"
     End Select
     Resume Exit_Function
@@ -429,7 +429,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ParsePath[mod_File])"
     End Select
     Resume Exit_Function

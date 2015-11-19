@@ -54,7 +54,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ReplaceString[mod_Strings])"
     End Select
     Resume Exit_Function
@@ -93,7 +93,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ChangeDelimiter[mod_Strings])"
     End Select
     Resume Exit_Function
@@ -139,7 +139,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - InsertSpace[mod_Strings])"
     End Select
     Resume Exit_Function
@@ -183,7 +183,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - CountInString[mod_Strings])"
     End Select
     Resume Exit_Function

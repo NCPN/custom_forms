@@ -18,8 +18,8 @@ Begin Form
     Width =8640
     DatasheetFontHeight =11
     ItemSuffix =17
-    Right =20460
-    Bottom =9408
+    Right =16050
+    Bottom =11760
     DatasheetGridlinesColor =14806254
     RecSrcDt = Begin
         0x06dd372434a7e440
@@ -278,6 +278,10 @@ Attribute oTile.VB_VarHelpID = -1
 Private Sub Form_Load()
 On Error GoTo Err_Handler
     
+    'initialize app (mod_App_UI)
+    Initialize
+    
+    'prepare interface
     Dim oLTile As Form_Tile
     Dim oCTile As Form_Tile
     Dim oRTile As Form_Tile
@@ -370,7 +374,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Form_Load[Main form])"
     End Select
     Resume Exit_Sub

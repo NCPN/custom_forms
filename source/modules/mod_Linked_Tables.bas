@@ -187,7 +187,7 @@ Err_Handler:
             "this application.", vbCritical, _
             "Error encountered (#" & Err.Number & " - VerifyConnections[mod_Linked_Tables])"
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - VerifyConnections[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -222,7 +222,7 @@ Err_Handler:
         MsgBox "The table '" & strTableName & "' was not found in the front-end.", _
             vbCritical, "Error encountered (#" & Err.Number & " - LinkedDatabase[mod_Linked_Tables])"
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - LinkedDatabase[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -282,7 +282,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ParseConnectionStr[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -426,7 +426,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - MakeBackup[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -472,7 +472,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - CheckLink[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -510,7 +510,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - IsODBC[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -590,7 +590,7 @@ Err_Handler:
             strTableName & " may not be an ODBC-linked table.", vbCritical, _
             "Error encountered (#" & Err.Number & " - TestODBCConnection[mod_Linked_Tables])"
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - TestODBCConnection[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -831,7 +831,7 @@ Err_Handler:
       Case 3270     ' Property not found (TableDefs description)
         Resume Next
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - RefreshLinks[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -1011,7 +1011,7 @@ Err_Handler:
       Case 3270     ' Property not found (TableDefs description)
         Resume Next
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - VerifyLinkTableInfo[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -1117,7 +1117,7 @@ Err_Handler:
             "database administrator before using this application.", vbCritical, _
             "Error encountered (#" & Err.Number & " - VerifyLinks[mod_Linked_Tables])"
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - VerifyLinks[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure
@@ -1171,7 +1171,7 @@ Exit_Procedure:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - FixLinkedDatabase[mod_Linked_Tables])"
     End Select
     Resume Exit_Procedure

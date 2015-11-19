@@ -10,6 +10,7 @@ Option Explicit
 ' Source/date:  Bonnie Campbell, April 2015
 ' Revisions:    BLC, 4/30/2015 - 1.00 - initial version
 '               BLC, 5/26/2015 - 1.01 - added PopulateSpeciesPriorities function from mod_Species
+'               BLC, 11/19/2015 - 1.02 - added CreateEnums call to initApp
 ' =================================
 
 ' =================================
@@ -71,7 +72,7 @@ On Error GoTo Err_Handler
     If ctrl.ControlType = acLabel Then
         ctrl.Caption = strTitle
         If strContext <> "DbAdmin" Then
-            ctrl.Visible = True
+            ctrl.visible = True
         End If
     End If
     
@@ -81,7 +82,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateInsetTitle[mod_App_UI])"
     End Select
     Resume Exit_Sub
@@ -150,7 +151,7 @@ On Error GoTo Err_Handler
     If ctrl.ControlType = acLabel Then
         ctrl.Caption = strInstructions
         If strContext <> "DbAdmin" Then
-            ctrl.Visible = True
+            ctrl.visible = True
         End If
     End If
     
@@ -160,7 +161,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateInstructions[mod_App_UI])"
     End Select
     Resume Exit_Sub
@@ -214,12 +215,11 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - PopulateSpeciesPriorities[mod_App_UI])"
     End Select
     Resume Exit_Function
 End Function
-
 
 ' ---------------------------------
 ' SUB:          Initialize
@@ -236,10 +236,14 @@ End Function
 '   BLC - 2/19/2015 - added dynamic getParkState() & standard error handling
 '   BLC - 3/4/2015  - shifted colors to mod_Color, removed setting of park, state, tgtYear TempVars
 '   BLC - 5/13/2015 - stub only
+'   BLC - 11/19/2015 - added CreateEnums call to create application specific Enums,
+'                      updated documentation to reflect mod_App_UI vs. mod_Init
 ' ---------------------------------
 Public Sub Initialize()
 On Error GoTo Err_Handler
 
+    'create the enums specific to this application from the Enums table & mod_App_Enum stub module
+    CreateEnums
 
 Exit_Sub:
     Exit Sub
@@ -247,8 +251,8 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - Initialize[mod_Init])"
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - Initialize[mod_App_UI])"
     End Select
     Resume Exit_Sub
 End Sub

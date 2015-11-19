@@ -87,7 +87,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - ExportVBComponent[mod_Git])"
     End Select
     Resume Exit_Function
@@ -134,7 +134,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetFileExtension[mod_Git])"
     End Select
     Resume Exit_Function
@@ -229,7 +229,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - DocDatabase[mod_Git])"
     End Select
     Resume Exit_Sub
@@ -285,7 +285,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - RecreateDatabase[mod_Git])"
     End Select
     Resume Exit_Sub
@@ -335,7 +335,7 @@ ExitHandler:
 ErrHandler:
     strErrMsg = strErrMsg & obj.name & "." & strPropertyName & " not set to " & _
         varValue & ". Error encountered (#" & Err.Number & " - SetPropertyDAO[mod_Git])" & _
-        Err.Number & " - " & Err.Description & vbCrLf
+        Err.Number & " - " & Err.description & vbCrLf
     
     Resume ExitHandler
 End Function
@@ -570,7 +570,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - FieldTypeName[mod_Git])"
     End Select
     Resume Exit_Function
@@ -658,7 +658,7 @@ Exit_Function:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - GetFieldTypeName[mod_Git])"
     End Select
     Resume Exit_Function

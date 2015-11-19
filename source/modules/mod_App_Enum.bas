@@ -11,153 +11,121 @@ Option Explicit
 ' Revisions:    BLC - 11/5/2015  - 1.00 - initial version
 ' =================================
 
-' ---------------------------------
-'   Enums
-' ---------------------------------
-
-Public Enum TaskType
-    '[_First] = 1
-    Site
-    Feature
-    Photo
-    Transect
-    Plot
-    '[_Last] = 5
-End Enum
-
-Public Enum PhotoType
-    Feature = 0
-    Transect = 1
-    Overview = 2
-    Reference = 3
-    'other
-    Animals = 4
-    Plants = 5
-    Cultural = 6
-    Scenic = 7
-    Disturbance = 8
-    Weather = 9
-    Fieldwork = 10
-    Other = 11
-End Enum
-
-Public Enum DirectionFacing
-    US
-    DS
-    RR
-    RL
-End Enum
-
-Public Enum TransducerType
-    US
-    DS
-    Air
-End Enum
-
-Public Enum WentworthClassSize
-    s
-    FG
-    MG
-    CG
-    SP
-    LP
-    SC
-    LC
-    B
-    BED
-End Enum
-
-Public Enum River
-    CAC
-    CBC
-    Green
-    GAC
-    GBC
-    Gunnison
-    Yampa
-End Enum
-
-Public Enum Park
-    BLCA
-    CANY
-    DINO
-End Enum
-
+'-----------------------------
+'  SlopeChangeCauses
+'-----------------------------
 Public Enum SlopeChangeCause
-    Debris
-    Ground
-    Rock
-    Veg
-    Water
+    Debris = 55
+    Ground = 56
+    Rock = 57
+    Veg = 58
+    Water = 59
 End Enum
 
-' Ashareef, August 22, 2014
-' http://stackoverflow.com/questions/25445422/array-in-an-enumeration
-Public Function CreateEnum()
-    Dim db As Database
-    Dim rs As Recordset
+'-----------------------------
+'  PhotoTypes
+'-----------------------------
+Public Enum PhotoType
+    Feature = 1
+    Transect = 2
+    Overview = 3
+    Reference = 4
+    Animals = 5
+    Plants = 6
+    Cultural = 7
+    Scenic = 8
+    Disturbance = 9
+    Weather = 10
+    Fieldwork = 11
+    Other = 12
+End Enum
 
-    Set db = CurrentDb
-    Set rs = db.OpenRecordset("MYENUMS", dbOpenSnapshot)
+'-----------------------------
+'  DirectionFacings
+'-----------------------------
+Public Enum DirectionFacing
+    US = 13
+    DS = 14
+    RR = 15
+    RL = 16
+End Enum
 
-    Dim m As Module
-    Dim s As String
-    Set m = Modules("myEnumsModule")
+'-----------------------------
+'  TransducerTypes
+'-----------------------------
+Public Enum TransducerType
+    US = 17
+    DS = 18
+    Air = 19
+End Enum
 
-    s = "Option Compare Database"
-    s = s & vbNewLine & "Option Explicit"
-    s = s & vbNewLine
-    s = s & vbNewLine & "Public Enum MyEnums"
-    With rs
-        Do Until .EOF
-            s = s & vbNewLine & vbTab & .Fields("MYENUM") & " = " & rs.Fields("MYENUM_ID")
-            .MoveNext
-        Loop
-    End With
-    s = s & vbNewLine & "End Enum"
+'-----------------------------
+'  Rivers
+'-----------------------------
+Public Enum River
+    CAC = 20
+    CBC = 21
+    Green = 22
+    GAC = 23
+    GBC = 24
+    Gunnison = 25
+    Yampa = 26
+End Enum
 
-    Call m.DeleteLines(1, m.CountOfLines)
-    Call m.AddFromString(s)
-End Function
+'-----------------------------
+'  WentworthClassSizes
+'-----------------------------
+Public Enum WentworthClassSize
+    s = 27
+    FG = 28
+    MG = 29
+    CG = 30
+    SP = 31
+    LP = 32
+    SC = 33
+    LC = 34
+    B = 35
+    BED = 36
+End Enum
 
-' ---------------------------------
-' SUB:          UpdateContacts
-' Description:  Update the contacts table from the linked table
-' Parameters:
-' Returns:      -
-' Throws:       none
-' References:   none
-' Source/date:
-' Adapted:      Bonnie Campbell, November 5, 2015 - for NCPN tools
-' Revisions:
-'   BLC - 11/5/2015  - initial version
-' ---------------------------------
-Public Sub UpdateContacts()
+'-----------------------------
+'  TaskTypes
+'-----------------------------
+Public Enum TaskType
+    Site = 37
+    Feature = 38
+    Photo = 39
+    Transect = 40
+    Plot = 41
+End Enum
 
-On Error GoTo Err_Handler
-    
-    Dim df As DirectionFacing
-    
-    
-    ' Chip Pearson, March 12, 2008
-    ' http://www.cpearson.com/excel/Enums.aspx
-    ' you can combine enums for combo types as in direction facing
-    df = DS + RL
-    
-    PhotoType.Feature
-    PhotoType.Overview
+'-----------------------------
+'  ActionTypes
+'-----------------------------
+Public Enum ActionType
+    Sample = 42
+    DataEntry = 43
+    Verification = 44
+    Download = 45
+    Change = 46
+End Enum
 
-    
-    
-       
-Exit_Sub:
-    Exit Sub
-    
-Err_Handler:
-    Select Case Err.Number
-      Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
-            "Error encountered (#" & Err.Number & " - UpdateContacts[mod_Linked_Data])"
-    End Select
-    Resume Exit_Sub
-End Sub
+'-----------------------------
+'  Status
+'-----------------------------
+Public Enum Status
+    Opened = 47
+    InProgress = 48
+    Completed = 49
+    Deferred = 50
+End Enum
+
+'-----------------------------
+'  Priority
+'-----------------------------
+Public Enum Priority
+    Critical = 51
+    High = 52
+    Medium = 53
+    Low = 54
+End Enum

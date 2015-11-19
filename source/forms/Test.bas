@@ -307,6 +307,6 @@ Exit_Procedure:
   Exit Sub
  
 Err_Procedure:
-  MsgBox Err.Description, vbExclamation, "Error in CreateMenu()"
+  MsgBox Err.description, vbExclamation, "Error in CreateMenu()"
     Resume Exit_Procedure
 End Sub

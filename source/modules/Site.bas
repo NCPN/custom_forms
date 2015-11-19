@@ -87,12 +87,12 @@ Public Property Get Park() As String
     Park = m_Park
 End Property
 
-Public Property Let Description(Value As String)
+Public Property Let description(Value As String)
     m_Description = Value
 End Property
 
-Public Property Get Description() As String
-    Description = m_Description
+Public Property Get description() As String
+    description = m_Description
 End Property
 
 Public Property Let Directions(Value As String)

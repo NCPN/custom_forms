@@ -166,3 +166,66 @@ End Property
 Public Property Get CompleteDate() As Date
     CompleteDate = m_CompleteDate
 End Property
+
+'---------------------
+' Methods
+'---------------------
+' ---------------------------------
+' Sub:          AddTask
+' Description:  Add new task item
+' Assumptions:  -
+' Parameters:   context - what the task is about/task type (string)
+'               task
+'               recordID - ID for the record the task references (integer)
+' Returns:      -
+' Throws:       none
+' References:   -
+' Source/date:  Bonnie Campbell, October 28, 2015 - for NCPN tools
+' Adapted:      -
+' Revisions:
+'   BLC - 11/3/2015 - initial version
+' ---------------------------------
+Public Sub AddTask()
+On Error GoTo Err_Handler
+
+'context As String, recordID As Integer, description As String, _
+                    status As Integer, priority As Integer, requestor As Integer, _
+                    Optional completor As Integer
+
+    Dim db As DAO.Database
+    Dim rs As DAO.Recordset
+    Dim strSQL As String
+    
+    Set db = CurrentDb
+    Set rs = db.OpenRecordset("Task")
+    
+    With rs
+        .AddNew
+        !TaskType = Me.TaskType
+        !Task = Me.Task
+        !Status = Me.Status
+        !Priority = Me.Priority
+        !RequestedBy = Me.RequestedByID
+        !RequestDate = Me.RequestDate
+        !CompletedBy = Me.CompletedByID
+        !CompleteDate = Me.CompleteDate
+        !LastUpdateBy = 1
+        !LastUpdate = Now()
+        
+        .Update
+        If IsNumeric(!ID) Then
+            Me.ID = !ID
+        End If
+    End With
+    
+
+Exit_Sub:
+    Exit Sub
+Err_Handler:
+    Select Case Err.Number
+      Case Else
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
+            "Error encountered (#" & Err.Number & " - AddTask[Task class])"
+    End Select
+    Resume Exit_Sub
+End Sub

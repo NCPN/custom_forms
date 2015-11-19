@@ -465,11 +465,11 @@ Public Property Let Title(Value As String)
     lblTitle.Caption = m_Title
 End Property
 
-Public Property Get Context() As String
-    Context = m_Context
+Public Property Get context() As String
+    context = m_Context
 End Property
 
-Public Property Let Context(Value As String)
+Public Property Let context(Value As String)
     If Len(Value) = 0 Then Value = "Context"
     If ValidateString(Value, "alphanumdashslashspace") Then
         m_Context = Value
@@ -640,7 +640,7 @@ End Property
 
 Public Property Let CommentVisible(Value As Byte)
     m_CommentVisible = Value
-    tbxComment.Visible = m_CommentVisible
+    tbxComment.visible = m_CommentVisible
 End Property
 
 Public Property Get InstructionVisible() As Byte
@@ -649,7 +649,7 @@ End Property
 
 Public Property Let InstructionVisible(Value As Byte)
     m_InstructionVisible = Value
-    lblInstructions.Visible = m_InstructionVisible
+    lblInstructions.visible = m_InstructionVisible
 End Property
 
 Public Property Get CountLabelVisible() As Byte
@@ -658,7 +658,7 @@ End Property
 
 Public Property Let CountLabelVisible(Value As Byte)
     m_CountLabelVisible = Value
-    lblCount.Visible = m_CountLabelVisible
+    lblCount.visible = m_CountLabelVisible
 End Property
 
 Public Property Get CurrentCountVisible() As Byte
@@ -667,7 +667,7 @@ End Property
 
 Public Property Let CurrentCountVisible(Value As Byte)
     m_CurrentCountVisible = Value
-    lblCount.Visible = m_CurrentCountVisible
+    lblCount.visible = m_CurrentCountVisible
 End Property
 
 Public Property Get MaxCountVisible() As Byte
@@ -676,7 +676,7 @@ End Property
 
 Public Property Let MaxCountVisible(Value As Byte)
     m_MaxCountVisible = Value
-    lblMaxCount.Visible = m_MaxCountVisible
+    lblMaxCount.visible = m_MaxCountVisible
 End Property
 
 Public Property Get RemainingCountVisible() As Byte
@@ -693,7 +693,7 @@ End Property
 
 Public Property Let AlertBoxVisible(Value As Byte)
     m_AlertBoxVisible = Value
-    Me.rctAlert.Visible = m_AlertBoxVisible
+    Me.rctAlert.visible = m_AlertBoxVisible
 End Property
 
 ' ==== Buttons ====
@@ -831,18 +831,18 @@ On Error GoTo Err_Handler
     Me.lineIndicator.Width = Me.Form.Width
     Me.lineIndicator.BorderColor = lngLime
     
-    Me.Context = "Plot - 24"
+    Me.context = "Plot - 24"
     
     Me.Instructions = "Enter your establishment comment."
     Me.CountLabelVisible = False
     Me.CurrentCount = "Characters Remaining:"
-    Me.lblCharacterCount.Visible = False
+    Me.lblCharacterCount.visible = False
     Me.MaxCount = 50
     Me.AlertCount = 10
    
     Me.AddAction = "add_"
     
-    Me.Context = Me.OpenArgs
+    Me.context = Me.OpenArgs
 
 Exit_Sub:
     Exit Sub
@@ -850,7 +850,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Form_Load[Comment form])"
     End Select
     Resume Exit_Sub
@@ -913,7 +913,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - tbxComment_Change[Comment form])"
     End Select
     Resume Exit_Sub
@@ -943,7 +943,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - btnAdd_Click[Comment form])"
     End Select
     Resume Exit_Sub
@@ -973,7 +973,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - btnCancel_Click[Comment form])"
     End Select
     Resume Exit_Sub
@@ -1007,7 +1007,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Initialize[Comment form])"
     End Select
     Resume Exit_Sub
@@ -1036,7 +1036,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Comment form])"
     End Select
     Resume Exit_Sub
@@ -1065,7 +1065,7 @@ Exit_Sub:
 Err_Handler:
     Select Case Err.Number
       Case Else
-        MsgBox "Error #" & Err.Number & ": " & Err.Description, vbCritical, _
+        MsgBox "Error #" & Err.Number & ": " & Err.description, vbCritical, _
             "Error encountered (#" & Err.Number & " - Class_Terminate[Comment form])"
     End Select
     Resume Exit_Sub
